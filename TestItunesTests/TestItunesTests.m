@@ -7,8 +7,14 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "RestKit.h"
+#import "API.h"
+#import "SearchEntity.h"
+#import "ViewModel.h"
 
 @interface TestItunesTests : XCTestCase
+
+@property SearchEntity *testEnt;
 
 @end
 
@@ -16,6 +22,7 @@
 
 - (void)setUp {
     [super setUp];
+    _testEnt = [[SearchEntity alloc] init];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -27,6 +34,17 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+- (void)testViewModel {
+    ViewModel *testModel = [ViewModel new];
+    XCTAssertEqual(0, testModel.numberOfItems);
+    testModel.model = [TestModel new];
+    XCTAssertEqual(0, testModel.numberOfItems);
+    testModel.model.results = @[];
+    XCTAssertEqual(0, testModel.numberOfItems);
+     testModel.model.results = @[[SearchEntity new]];
+    XCTAssertEqual(1, testModel.numberOfItems);
 }
 
 - (void)testPerformanceExample {

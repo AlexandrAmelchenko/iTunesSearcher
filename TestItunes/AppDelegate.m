@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RestKit.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     return YES;
 }
 
